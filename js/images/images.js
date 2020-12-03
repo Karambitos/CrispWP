@@ -19,7 +19,7 @@ const winPicture = {
     alt: 'Figter',
 };
 const bonusFigterCh = {
-    url: './images/chicken.png',
+    url: './images/bonusHighestLvl.png',
     alt: 'Figter',
 };
 const hitEffect = {

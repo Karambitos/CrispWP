@@ -106,15 +106,6 @@ function animateDiv() {
             animateDiv();
         },
     );
-    // $('.big-boss').animate({
-    //         top: newq[0],
-    //         left: newq[1],
-    //     },
-    //     1000,
-    //     function () {
-    //         animateDiv();
-    //     },
-    // );
 }
 
 const moveBoxs = document.querySelectorAll('.move-box');

@@ -416,8 +416,8 @@
             transform: translateY(0);
   }
   50% {
-    -webkit-transform: translateY(-80%);
-            transform: translateY(-80%);
+    -webkit-transform: translateY(-10%);
+            transform: translateY(-10%);
   }
   100% {
     -webkit-transform: translateY(100%);
@@ -431,8 +431,8 @@
             transform: translateY(0);
   }
   50% {
-    -webkit-transform: translateY(-80%);
-            transform: translateY(-80%);
+    -webkit-transform: translateY(-10%);
+            transform: translateY(-10%);
   }
   100% {
     -webkit-transform: translateY(100%);
@@ -1579,7 +1579,7 @@ section.unsupported-browser {
 .big-boss {
   width: 700px;
   position: absolute;
-  bottom: -150%;
+  bottom: -10%;
   -webkit-animation: chicken 1500ms ease;
           animation: chicken 1500ms ease;
 }
