@@ -148,6 +148,19 @@ section.unsupported-browser {
   }
 }
 
+//! Test BONUS
+.virusLeft,
+.virusRight{
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+
+  img{
+    filter: drop-shadow(black 2px 4px 6px);
+  }
+}
+//!------------------------------------!//
+
 .big-boss.activeHit,
 .virusLeft.activeHit,
 .virusRight.activeHit,
@@ -236,5 +249,7 @@ section.unsupported-browser {
     }
   }
 }
+
+
 
 

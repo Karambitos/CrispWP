@@ -227,7 +227,7 @@ function toTheNextRound() {
   toMove.count = 0;
   toMove.round += 1;
   toMove.calcPercent(2);
-  // bonusFigter.url = `./images/bonus${toMove.round}.png`;
+  bonusFigter.url = `./images/bonus${toMove.round}.png`;
   firstFigter.url = `./images/main-target${toMove.round}.png`;
   firstFigter.alt = 'target2';
   enemy.setAttribute('src', `./images/main-target${toMove.round}.png`);
