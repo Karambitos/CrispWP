@@ -24,12 +24,10 @@ import {
   hitEffect,
   bonusHitEffect,
   roundWin,
-  bonusFigterCh
+  bonusFigterCh,
 } from './images/images.js';
 
-import {
-  typingText
-} from './animation.js';
+import { typingText } from './animation.js';
 
 setTimeout(function () {
   addElement();
@@ -38,6 +36,7 @@ setTimeout(function () {
 roundNumberHide();
 
 const toMove = {
+  audioTag: document.querySelector('#audio'),
   count: 0,
   barMargin: 0,
   hand: true,
@@ -61,25 +60,26 @@ const toMove = {
   },
   wrongMoveHand(e) {
     if (!e.target.parentNode.classList.contains('fighter')) {
-        if (this.hand) {
+      if (this.hand) {
         this.hand = false;
-        rightHand.style.bottom = (-20) + '%';
+        rightHand.style.bottom = -20 + '%';
         setTimeout(function () {
-          rightHand.style.bottom = (-23) + '%';
+          rightHand.style.bottom = -23 + '%';
         }, 200);
-        } else {
+      } else {
         this.hand = true;
-        leftHand.style.bottom = (-25) + '%';
+        leftHand.style.bottom = -25 + '%';
         setTimeout(function () {
-          leftHand.style.bottom = (-28) + '%';
+          leftHand.style.bottom = -28 + '%';
         }, 200);
       }
-    } return
-    
+    }
+    return;
   },
   toMoveRightHand(e) {
     let target = e.currentTarget;
     hitEffectAdd(target);
+    this.turnOnSoundPlay(this.audioTag.currentSrc);
     rightHand.style.top = e.clientY + 'px';
     rightHand.style.left = e.clientX + 'px';
     this.calcPercent();
@@ -88,9 +88,11 @@ const toMove = {
       rightHand.style.left = '';
     }, 200);
   },
+
   toMoveLeftHand(e) {
     let target = e.currentTarget;
     hitEffectAdd(target);
+    this.turnOnSoundPlay(this.audioTag.currentSrc);
     leftHand.style.top = e.clientY + 'px';
     leftHand.style.left = e.clientX - 200 + 'px';
     this.calcPercent();
@@ -99,6 +101,11 @@ const toMove = {
       leftHand.style.left = '';
     }, 200);
   },
+  turnOnSoundPlay(src) {
+    const audio = new Audio(src);
+    audio.play();
+  },
+
   removeAllFighters() {
     const toRemoveFiters = document.querySelectorAll('.fighter');
     toRemoveFiters.forEach(elem => {
@@ -142,8 +149,10 @@ const toMove = {
     /*
      * Bonus fiters shows up
      */
-    if (!document.querySelector('.virusRight') &&
-      !document.querySelector('.big-boss')) {
+    if (
+      !document.querySelector('.virusRight') &&
+      !document.querySelector('.big-boss')
+    ) {
       if (parseInt(progress.textContent) >= this.bonusPersent) {
         toChangeRoundPict(`${bonusHitEffect.url}`);
         setTimeout(() => {
@@ -161,14 +170,13 @@ const toMove = {
               $('.big-boss').removeClass('big-boss--top');
               $('.big-boss').addClass('big-boss--right');
             }, 4500);
-          }
-          else {
-          addVirusElement();
-          // console.log('addVirusElement()', addVirusElement());
+          } else {
+            addVirusElement();
+            // console.log('addVirusElement()', addVirusElement());
           }
         }, 1500);
       }
-    } 
+    }
 
     /*
      * Win - image shows / go to next Lvl
@@ -217,7 +225,7 @@ function refereeShow() {
     arrovNext.classList.add('active');
   }, 4000);
   arrovNext.addEventListener('click', toTheNextRound);
-};
+}
 /*
  * Go to the next round
  */
@@ -253,18 +261,18 @@ function toTheNextRound() {
 
     addElement();
   }, 1000);
-};
+}
 
 function stopAnimation() {
   const targetBg = document.querySelector('.main-target');
   targetBg.classList.remove('main-target-animate');
-};
+}
 
 function toChangeRoundPict(pict) {
   roundPict.setAttribute('src', pict);
   roundNumber.classList.add('active');
   roundNumberHide();
-};
+}
 /*
  * Hide round Number
  */
@@ -272,7 +280,7 @@ function roundNumberHide() {
   setTimeout(function () {
     roundNumber.classList.remove('active');
   }, 1500);
-};
+}
 /*
  * Create main element
  */
@@ -295,13 +303,13 @@ function addElement() {
   document
     .querySelector('.fight-container--animate-box')
     .insertAdjacentHTML('beforeend', div);
-  
+
   let allTargets = document.querySelectorAll('.mainTarget');
 
   allTargets.forEach(el =>
     el.addEventListener('click', e => toMove.toChooseHand(e)),
   );
-};
+}
 
 /*
  * Create virus element
@@ -332,7 +340,7 @@ function addVirusElement() {
   allTargets.forEach(el =>
     el.addEventListener('click', e => toMove.toChooseHand(e)),
   );
-};
+}
 
 /*
  * Create Chicken element
@@ -348,28 +356,24 @@ function addChickenElement() {
                 </span>
             </div>`;
   fightContainer.insertAdjacentHTML('beforeend', div);
-};
+}
 
 /*
  * Create hands Hit effect
  */
 function hitEffectAdd(target) {
-  target.classList.add('activeHit')
+  target.classList.add('activeHit');
   setTimeout(function () {
-    target.classList.remove('activeHit')
-    target.classList.add('active')
+    target.classList.remove('activeHit');
+    target.classList.add('active');
   }, 520);
   setTimeout(function () {
-    target.classList.remove('active')
+    target.classList.remove('active');
   }, 2500);
-};
-
+}
 
 /*
  * Hands if hit missed
  */
 const ringSection = document.querySelector('.fight-container');
 ringSection.addEventListener('click', e => toMove.wrongMoveHand(e));
-
-
-    
