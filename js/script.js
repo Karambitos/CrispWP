@@ -38,8 +38,8 @@ setTimeout(() => {
     if (document.querySelector('body').classList.contains('main-page')) {
     setTimeout(() => {
         const startArrow = document.querySelector('.start--arrow');
-        startArrow.classList.add('active')
-        }, 8000);
+        startArrow.classList.add('active');
+        }, 5000);
 }
 }, 100);
 
