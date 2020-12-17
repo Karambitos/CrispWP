@@ -58,28 +58,28 @@ const toMove = {
       this.toMoveLeftHand(e);
     }
   },
-  wrongMoveHand(e) {
-    if (!e.target.parentNode.classList.contains('fighter')) {
-      if (this.hand) {
-        this.hand = false;
-        rightHand.style.bottom = -20 + '%';
-        setTimeout(function () {
-          rightHand.style.bottom = -23 + '%';
-        }, 200);
-      } else {
-        this.hand = true;
-        leftHand.style.bottom = -25 + '%';
-        setTimeout(function () {
-          leftHand.style.bottom = -28 + '%';
-        }, 200);
-      }
-    }
-    return;
-  },
+  // wrongMoveHand(e) {
+  //   if (!e.target.parentNode.classList.contains('fighter')) {
+  //     if (this.hand) {
+  //       this.hand = false;
+  //       rightHand.style.bottom = -20 + '%';
+  //       setTimeout(function () {
+  //         rightHand.style.bottom = -23 + '%';
+  //       }, 200);
+  //     } else {
+  //       this.hand = true;
+  //       leftHand.style.bottom = -25 + '%';
+  //       setTimeout(function () {
+  //         leftHand.style.bottom = -28 + '%';
+  //       }, 200);
+  //     }
+  //   }
+  //   return;
+  // },
   toMoveRightHand(e) {
     let target = e.currentTarget;
     hitEffectAdd(target);
-    this.turnOnSoundPlay(this.audioTag.currentSrc);
+    // this.turnOnSoundPlay(this.audioTag.currentSrc);
     rightHand.style.top = e.clientY + 'px';
     rightHand.style.left = e.clientX + 'px';
     this.calcPercent();
@@ -92,7 +92,7 @@ const toMove = {
   toMoveLeftHand(e) {
     let target = e.currentTarget;
     hitEffectAdd(target);
-    this.turnOnSoundPlay(this.audioTag.currentSrc);
+    // this.turnOnSoundPlay(this.audioTag.currentSrc);
     leftHand.style.top = e.clientY + 'px';
     leftHand.style.left = e.clientX - 200 + 'px';
     this.calcPercent();
@@ -101,10 +101,10 @@ const toMove = {
       leftHand.style.left = '';
     }, 200);
   },
-  turnOnSoundPlay(src) {
-    const audio = new Audio(src);
-    audio.play();
-  },
+  // turnOnSoundPlay(src) {
+  //   const audio = new Audio(src);
+  //   audio.play();
+  // },
 
   removeAllFighters() {
     const toRemoveFiters = document.querySelectorAll('.fighter');
@@ -375,5 +375,5 @@ function hitEffectAdd(target) {
 /*
  * Hands if hit missed
  */
-const ringSection = document.querySelector('.fight-container');
-ringSection.addEventListener('click', e => toMove.wrongMoveHand(e));
+// const ringSection = document.querySelector('.fight-container');
+// ringSection.addEventListener('click', e => toMove.wrongMoveHand(e));

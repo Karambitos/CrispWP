@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  font-family: "Bangers", cursive;
+  font-family: "Bangers", sans-serif;
   font-weight: 400;
   margin: 0;
   padding: 0;
@@ -30,10 +30,10 @@ body {
 
 .logo {
   position: absolute;
-  // top: 65px;
   top: 3%;
   right: 100px;
   z-index: 30;
+      padding: 30px;
 
   img {
         filter: drop-shadow(2px 4px 6px white);
